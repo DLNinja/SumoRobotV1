@@ -46,19 +46,18 @@ void Stop(){
 int getDistance(int trigP, int echoP){
   digitalWrite(trigP, LOW);
   delayMicroseconds(2);
-  // Sets the trigPin on HIGH state for 10 micro seconds
+  
   digitalWrite(trigP, HIGH);
   delayMicroseconds(10);
   digitalWrite(trigP, LOW);
-  // Reads the echoPin, returns the sound wave travel time in microseconds
+  
   long duration = pulseIn(echoP, HIGH);
-  // Calculating the distance
+  
   int distance= duration*0.034/2;
   return distance;
 }
 
 void setup() {
-  // put your setup code here, to run once:
   Serial.begin(9600);
   
   pinMode(enA, OUTPUT);
@@ -81,10 +80,8 @@ void loop() {
 
   if(dist < 35){
     goFront();
-    //delay(20);
   }else if(dist < 200){
     rotateLeft();
-    //delay(20);
   }else{
     Stop();
   }
