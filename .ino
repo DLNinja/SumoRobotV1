@@ -26,18 +26,6 @@ void goFront(){
   //Serial.println("Front");
 }
 
-void goBack(){
-  analogWrite(enA, speed1);
-  analogWrite(enB, speed1);
-  
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, HIGH);
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, HIGH);
-
-  //Serial.print("Back");
-}
-
 void rotateLeft(){
   analogWrite(enA, 200);
   analogWrite(enB, 0);
@@ -45,18 +33,6 @@ void rotateLeft(){
   digitalWrite(in1, HIGH);
   digitalWrite(in2, LOW);
   digitalWrite(in3, LOW);
-  digitalWrite(in4, LOW);
-
-  //Serial.print("Left");
-}
-
-void rotateRight(){
-  analogWrite(enA, 0);
-  analogWrite(enB, 200);
-  
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, LOW);
-  digitalWrite(in3, HIGH);
   digitalWrite(in4, LOW);
 
   //Serial.print("Left");
@@ -101,13 +77,8 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   int dist = getDistance(trigPin, echoPin);
-  //int safeDist = getDistance(trigUp, echoUp);
 
-  //goFront();
-  //rotateLeft();
-  
   if(dist < 35){
     goFront();
     //delay(20);
@@ -120,7 +91,5 @@ void loop() {
 
   Serial.print("Distance: ");
   Serial.println(dist);
-  //Serial.print(" Safe Distance ");
-  //Serial.println(safeDist);
   delay(30);
 }
